@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Finder</title>
+</head>
+<body>
+    <h1>📚 Book Finder</h1>
+    <form method="post">
+        <input type="text" name="query" placeholder="Enter book title..." />
+        <button type="submit">Search</button>
+    </form>
+
+    {% if books %}
+        <ul>
+        {% for book in books %}
+            <li>
+                <strong>{{ book.title }}</strong> <br>
+                Author: {{ book.author_name|join(', ') if book.author_name else "Unknown" }} <br>
+                Year: {{ book.first_publish_year or "N/A" }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
